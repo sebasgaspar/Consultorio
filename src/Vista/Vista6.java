@@ -442,7 +442,7 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
         String telefono=this.jTextField5.getText();
         String fecha=String.valueOf(this.jComboBox2.getSelectedItem())+"/"+String.valueOf(this.jComboBox3.getSelectedItem())+"/"+
              String.valueOf(this.jComboBox1.getSelectedItem());
-        paciente.crearPaciente(code, name, apellido2, apellido2, telefono, fecha, genero, foto);
+        paciente.crearPaciente(code, name, apellido1, apellido2, telefono, fecha, genero, foto);
         
     }
     @Override
