@@ -11,8 +11,9 @@ public class Paciente {
     private String telefono;
     private String fechaNacimiento;
     private char genero;
+    private String foto;
 
-    public Paciente(String idPaciente, String nombre, String primerApellido, String segundoApellido, String telefono, String fechaNacimiento, char genero) {
+    public Paciente(String idPaciente, String nombre, String primerApellido, String segundoApellido, String telefono, String fechaNacimiento, char genero,String foto) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.primerApellido = primerApellido;
@@ -20,6 +21,16 @@ public class Paciente {
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
+        this.foto=foto;
+    }
+
+    
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getIdPaciente() {
@@ -80,7 +91,7 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return  idPaciente+ ";" + nombre + ";" + primerApellido + ";" + segundoApellido + ";" + telefono + ";" + fechaNacimiento + ";" + genero;
+        return  idPaciente+ ";" + nombre + ";" + primerApellido + ";" + segundoApellido + ";" + telefono + ";" + fechaNacimiento + ";" + genero+";"+foto;
     }
 
     

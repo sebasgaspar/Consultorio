@@ -5,8 +5,16 @@
  */
 package Vista;
 
+import Gestion.GestorPaciente;
+import Negocio.Paciente;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,11 +25,18 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
     /**
      * Creates new form Vista6
      */
+    private GestorPaciente paciente;
+    private int i=0;
+    private String code="";
+    private String foto;
+     private char genero;
     public Vista6() {
         initComponents();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        paciente=new GestorPaciente();
         this.escuchar();
+        this.llenaCombo();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +92,7 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
         panel2Layout.setHorizontalGroup(
             panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
             .addGroup(panel2Layout.createSequentialGroup()
@@ -128,11 +143,11 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
         buttonGroup2.add(jRadioButton3);
         jRadioButton3.setText("Hombre");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  ", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
 
         javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
         panel3.setLayout(panel3Layout);
@@ -216,8 +231,6 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
 
         jLabel2.setText("Id:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Buscar");
 
@@ -228,7 +241,7 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
 
         jButton3.setText("Eliminar");
 
-        jButton4.setText("Historia clinica");
+        jButton4.setText("Atras");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -244,12 +257,12 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton2)
-                                    .addComponent(jButton3))))
+                                    .addComponent(jButton3)))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 24, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -283,8 +296,8 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -305,7 +318,8 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -356,8 +370,91 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
     private java.awt.Panel panel3;
     // End of variables declaration//GEN-END:variables
 
+    private void llenaCombo()
+    {
+        ArrayList<Paciente>lista=paciente.getPaciente();
+        for(Paciente p:lista)
+        {
+            this.jComboBox4.addItem(p.getIdPaciente());
+        }
+    }
+    private void llena()
+    {
+        String code=String.valueOf(this.jComboBox4.getSelectedItem());
+        Paciente lista=paciente.buscaPaciente(code);
+        this.jTextField1.setText(lista.getIdPaciente());
+        this.jTextField2.setText(lista.getNombre());
+        this.jTextField3.setText(lista.getPrimerApellido());
+        this.jTextField4.setText(lista.getSegundoApellido());
+        this.jTextField5.setText(lista.getTelefono());
+        String[] campos = lista.getFechaNacimiento().split("/");
+        this.jComboBox1.setSelectedItem(campos[2]);
+        this.jComboBox2.setSelectedItem(campos[0]);
+        this.jComboBox3.setSelectedItem(campos[1]);
+        if(lista.getGenero()=='M')
+        {
+            this.jRadioButton3.setSelected(true);
+        }
+        if(lista.getGenero()=='F')
+        {
+            this.jRadioButton2.setSelected(true);
+        }
+          Toolkit tk=Toolkit.getDefaultToolkit();
+        Image imagen=tk.createImage("./Images/"+lista.getFoto());
+        jLabel1.setIcon(new ImageIcon(imagen.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH)));
+    
+    }
+    private void modifica(String cod)
+    {
+        String code=this.jTextField1.getText();
+        String name=this.jTextField2.getText();
+        String apellido1=this.jTextField3.getText();
+        String apellido2=this.jTextField4.getText();
+        String telefono=this.jTextField5.getText();
+        String fecha=String.valueOf(this.jComboBox2.getSelectedItem())+"/"+String.valueOf(this.jComboBox3.getSelectedItem())+"/"+
+             String.valueOf(this.jComboBox1.getSelectedItem());
+        paciente.modificarIdPaciente(cod, code);
+        paciente.modificarNombre(code, name);
+        paciente.modificarPrimerApellido(code, apellido1);
+        paciente.modificarSegundoApellido(code, apellido2);
+        paciente.modificarTelefono(code, telefono);
+        paciente.modificarFechaNacimiento(code, fecha);
+        paciente.modificarGenero(code, genero);
+    }
+    private void cargafoto()
+    {
+        JFileChooser jfc=new JFileChooser();
+        int rta=jfc.showSaveDialog(null);
+        
+        if(rta==JFileChooser.APPROVE_OPTION)
+            foto=jfc.getSelectedFile().getName();
+        
+        Toolkit tk=Toolkit.getDefaultToolkit();
+        Image imagen=tk.createImage("./Images/"+foto);
+        jLabel1.setIcon(new ImageIcon(imagen.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH)));
+    }
+    private void guarda()
+    {
+         String code=this.jTextField1.getText();
+        String name=this.jTextField2.getText();
+        String apellido1=this.jTextField3.getText();
+        String apellido2=this.jTextField4.getText();
+        String telefono=this.jTextField5.getText();
+        String fecha=String.valueOf(this.jComboBox2.getSelectedItem())+"/"+String.valueOf(this.jComboBox3.getSelectedItem())+"/"+
+             String.valueOf(this.jComboBox1.getSelectedItem());
+        paciente.crearPaciente(code, name, apellido2, apellido2, telefono, fecha, genero, foto);
+        
+    }
     @Override
    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==this.jRadioButton3)
+        {
+            genero='M';
+        }
+        if(e.getSource()==this.jRadioButton2)
+        {
+            genero='F';
+        }
         if(e.getSource()==this.jRadioButton4)
         {
             this.jTextField1.setEditable(false);
@@ -365,6 +462,79 @@ public class Vista6 extends javax.swing.JFrame implements ActionListener{
             this.jTextField3.setEditable(false);
             this.jTextField4.setEditable(false);
             this.jTextField5.setEditable(false);
+            this.jButton1.setEnabled(false);
+            this.jComboBox1.setEditable(false);
+            this.jComboBox2.setEditable(false);
+            this.jComboBox3.setEditable(false);
+            i=0;
+            this.llena();
+        }
+        if(e.getSource()==this.jRadioButton5)
+        {
+            this.jTextField1.setEditable(true);
+            this.jTextField2.setEditable(true);
+            this.jTextField3.setEditable(true);
+            this.jTextField4.setEditable(true);
+            this.jTextField5.setEditable(true);
+            this.jButton1.setEnabled(true);
+            this.jComboBox1.setEditable(true);
+            this.jComboBox2.setEditable(true);
+            this.jComboBox3.setEditable(true);
+            this.jTextField1.setText("");
+            this.jTextField2.setText("");
+            this.jTextField3.setText("");
+            this.jTextField4.setText("");
+            this.jTextField5.setText("");
+            this.jComboBox1.setSelectedItem("");
+            this.jComboBox2.setSelectedItem("");
+            this.jComboBox3.setSelectedItem("");
+            i=3;
+            this.jButton2.setText("Guarda");
+            this.llena();
+        }
+        if(e.getSource()==this.jButton1)
+        {
+            this.cargafoto();
+        }
+        if(e.getSource()==this.jButton2)
+        {
+            
+            if(i==1)
+            {
+            this.modifica(code);
+            }
+            if(i==0){
+             this.jTextField1.setEditable(true);
+            this.jTextField2.setEditable(true);
+            this.jTextField3.setEditable(true);
+            this.jTextField4.setEditable(true);
+            this.jTextField5.setEditable(true);
+            this.jButton1.setEnabled(true);
+            this.jComboBox1.setEditable(true);
+            this.jComboBox2.setEditable(true);
+            this.jComboBox3.setEditable(true);
+            code=this.jTextField1.getText();
+            i=1;
+            }
+            if(i==3)
+            {
+                this.guarda();
+                VistaPrincipal p=new VistaPrincipal();
+                this.setVisible(false);
+            }
+            
+        }
+        if(e.getSource()==this.jButton3)
+        {
+             int i=JOptionPane.showConfirmDialog(null,"Realmente desea eliminar el paciente?..","Confirmar eliminacion",JOptionPane.OK_CANCEL_OPTION);
+            if(i==JOptionPane.OK_OPTION){
+            paciente.eliminarPaciente(this.jTextField1.getText());
+            }
+        }
+        if(e.getSource()==this.jButton4)
+        {
+            VistaPrincipal p=new VistaPrincipal();
+            this.setVisible(false);
         }
     }
 

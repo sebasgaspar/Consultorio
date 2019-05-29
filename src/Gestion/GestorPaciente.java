@@ -20,9 +20,9 @@ public class GestorPaciente {
         this.verificArchivo();
     }
 
-    public void crearPaciente(String idPaciente, String nombre, String primerapellido, String segundoapellido, String telefono, String fechaNacimiento, char genero) {
+    public void crearPaciente(String idPaciente, String nombre, String primerapellido, String segundoapellido, String telefono, String fechaNacimiento, char genero,String foto) {
         Paciente paciente;
-        paciente = new Paciente(idPaciente, nombre, primerapellido, segundoapellido, telefono, fechaNacimiento, genero);
+        paciente = new Paciente(idPaciente, nombre, primerapellido, segundoapellido, telefono, fechaNacimiento, genero,foto);
         this.guardaPaciente(paciente);
     }
 
@@ -54,7 +54,7 @@ public class GestorPaciente {
 
             while ((registro = br.readLine()) != null) {
                 String[] campos = registro.split(";");
-                lista = new Paciente(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5], charAt(campos[6]));
+                lista = new Paciente(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5],campos[6].charAt(0),campos[7]);
                 pacientes.add(lista);
             }
         } catch (IOException ioe) {
@@ -75,7 +75,7 @@ public class GestorPaciente {
             while ((registro = br.readLine()) != null) {
                 String[] campos = registro.split(";");
                 if ((campos[0].equals(idPaciente))) {
-                    paciente = new Paciente(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5], charAt(campos[6]));
+                    paciente = new Paciente(campos[0], campos[1], campos[2], campos[3], campos[4], campos[5],campos[6].charAt(0),campos[7]);
 
                     break;
                 }
@@ -266,9 +266,7 @@ public class GestorPaciente {
         }
     }
 
-    private char charAt(String campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
 
 }
